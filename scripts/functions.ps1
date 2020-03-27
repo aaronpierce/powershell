@@ -1,34 +1,33 @@
-function map
-{
+
+function date-string {
     param(
-        [Parameter(Mandatory=$true,Position=0)]
-        [scriptblock]
-        $Function,
-        [Parameter(Mandatory=$true,Position=1)]
-        [Object[]]
-        $InputObject
+        [switch]$delimiter = $false,
+        [switch]$time = $false,
+        [switch]$timed = $false,
+        [switch]$h = $false,
+        [switch]$m = $false,
+        [switch]$s = $false,
+        [switch]$utc = $false
     )
 
-    if($Function.Ast.ParamBlock -eq $null)
-    {
-        $Function = [scriptblock]::Create('param($_)'+$Function.ToString())
-    }
-    elseif($Function.Ast.ParamBlock.Parameters.Count -eq 1)
-    {
-        if($Function.Ast.ParamBlock.Parameters[0].Name.ToString() -ne '$_')
-        {
-            Write-Error "Invalid ParamBlock in Function"
-            return $false
-        }
-    }
-    else
-    {
-        Write-Error "Invalid ParamBlock in Function"
-        return $false
-    }
 
-    foreach($obj in $InputObject)
-    {
-        &$Function $obj
-    }
+    $dt = [DateTime]::Now
+    if ($utc) { $dt = [DateTime]::UTCNow }
+    if ($timed) { $time, $delimiter = $true, $true }
+    if ($time) { $h, $m, $s = $true, $true, $true }
+
+
+    $del = ''
+
+    if ($delimiter) { $del = '.'}
+
+    $_date = [String]$dt.year + $del + [String]$dt.month + $del + [String]$dt.day
+
+    $result = $_date
+
+    if ($h) { $result += $del + [String]$dt.hour }
+    if ($m) { $result += $del + [String]$dt.minute }
+    if ($s) { $result += $del + [String]$dt.second }
+
+    return $result
 }
