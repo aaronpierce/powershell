@@ -1,0 +1,1 @@
+New-Alias List Get-ChildItem
