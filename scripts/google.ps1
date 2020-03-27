@@ -24,6 +24,6 @@ function google {
     $SearchFor = $SearchFor -Replace "\s+", " "
     $SearchFor = $SearchFor -Replace " ", "+"
 
-   	Start "https://www.google.com/search?q=$SearchFor"
+   	Start-Process "https://www.google.com/search?q=$SearchFor"
 
 }

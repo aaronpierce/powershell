@@ -1,5 +1,5 @@
 
-function date-string {
+function datestring {
     param(
         [switch]$delimiter = $false,
         [switch]$time = $false,
