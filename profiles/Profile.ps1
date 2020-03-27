@@ -30,17 +30,15 @@ Get-ChildItem -Path $ModulesPath -Filter "*.psm1" | ForEach-Object { Import-Modu
 
 Windows default powershell profile looks as follows:
 
- if ($Host.Name -eq 'ConsoleHost') {
-     # Inside VSCode Enviornment 
-     Write-Host "Loading Console"
+# Inside Console Enviornment 
+if ($Host.Name -eq 'ConsoleHost') {
 
- $PSRoot = "$env:USERPROFILE\Google Drive\Programming\Powershell\GitHub"
- . "$PSRoot\profiles\Profile.ps1"
+    $PSRoot = "$env:USERPROFILE\Google Drive\Programming\Powershell\GitHub"
+    . "$PSRoot\profiles\Profile.ps1"
 
- }
+}
+# Inside VSCode Enviornment 
+elseif ($Host.Name -eq 'Visual Studio Code Host') { 
 
- elseif ($Host.Name -eq 'Visual Studio Code Host') { 
-     # Inside VSCode Enviornment 
-     Write-Host "Loading VSCode"
- }
+}
 #>
