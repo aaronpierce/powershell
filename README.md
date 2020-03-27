@@ -1,3 +1,3 @@
 # Powershell
 
-Powershell scripts and modules I use for personally.
+Powershell scripts and modules I use personally.
