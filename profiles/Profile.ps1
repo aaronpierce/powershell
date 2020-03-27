@@ -10,8 +10,8 @@ $ScriptPath = Join-Path $PSRoot -ChildPath 'scripts'
 $Env:PSModulePath += $ModulesPath
 
 ## Dot Sourcing
-Get-ChildItem -Path $ScriptPath | ForEach-Object {. $($_.FullName)}
-Get-ChildItem -Path $PromptPath | ForEach-Object {. $($_.FullName)}
+Get-ChildItem -Path $ScriptPath -Filter "*.ps1" | ForEach-Object {. $($_.FullName)}
+Get-ChildItem -Path $PromptPath -Filter "*.ps1" | ForEach-Object {. $($_.FullName)}
 
 ## Install Modules
 Get-ChildItem -Path $ModulesPath -Filter "*.psm1" | ForEach-Object { Import-Module ($_.FullName)}
