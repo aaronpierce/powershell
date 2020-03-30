@@ -34,7 +34,7 @@ The simplest way to put these files into immediate use!
  
 Clone this repo with git: 
 ```powershell
-git clone https:\\github.com\aaronwpierce\powershell
+git clone https://github.com/aaronpierce/powershell.git
 ```
 Then run `deploy.ps1` from within it's location.
 
