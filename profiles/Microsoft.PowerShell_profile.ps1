@@ -1,7 +1,7 @@
 # Inside Console Enviornment 
 if ($Host.Name -eq 'ConsoleHost') {
 
-    $PSRoot = "$env:USERPROFILE\Google Drive\Programming\Powershell\GitHub"
+    $PSRoot = ""
     . "$PSRoot\profiles\Profile.ps1"
 
 }
