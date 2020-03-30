@@ -1,2 +1,3 @@
-modules/Dirs/*
+modules/log
+modules/app
 .vscode/
