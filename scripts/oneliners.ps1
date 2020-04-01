@@ -1,3 +1,5 @@
+<# Small one-liner functions defined here that are more than just an alias. #>
+
 function touch($file) { "" | Out-File $file -Encoding ASCII }
 
 function getip($hostname) { [Net.Dns]::GetHostByName($hostname).AddressList.IPAddressToString } 
@@ -19,3 +21,5 @@ function cdcode { Set-Location $env:USERPROFILE'\Google Drive\Programming' }
 function pr { . $profile }
 
 function er { & $env:ProgramData'\chocolatey\bin\RefreshEnv.cmd' }
+
+function Start-Python($script) {python (Join-Path $PythonPath -ChildPath $script)}

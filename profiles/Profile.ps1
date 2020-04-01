@@ -8,11 +8,12 @@
         github.com\aaronpierce
 #>
 
-
+## Powerhshell Paths
 $ModulesPath = Join-Path $PSRoot -ChildPath 'modules'
 $PromptPath =Join-Path $PSRoot -ChildPath 'prompts'
 $ScriptPath = Join-Path $PSRoot -ChildPath 'scripts'
 #$ProfilePath =Join-Path $PSRoot -ChildPath 'profiles'
+
 
 $Env:PSModulePath += $ModulesPath
 

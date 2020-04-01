@@ -12,12 +12,18 @@ function Add-PathVar {
     (Get-Content $Path) -replace $regex, $newText | Set-Content $Path
 }
 
-$PSPATH = (Join-Path -Path $env:USERPROFILE -ChildPath "Documents\WindowsPowershell")
+$WPSPATH = (Join-Path -Path $env:USERPROFILE -ChildPath "Documents\WindowsPowerShell")
+$CPSPATH = (Join-Path -Path $env:USERPROFILE -ChildPath "Documents\PowerShell")
 
-foreach ($file in Get-ChildItem ".\profiles" -Exclude "Profile.ps1") {
-    Copy-Item -Path $file -Destination $PSPATH
-}
+$PSPATHS = @($WPSPATH, $CPSPATH)
 
-foreach ($file in Get-ChildItem $PSPATH -Filter "*_profile.ps1") {
-    Add-PathVar -Verbose -Path (Join-Path -Path $PSPATH -ChildPath $file) 
+foreach ($P in $PSPATHS) {
+    
+    foreach ($file in Get-ChildItem ".\profiles" -Exclude "Profile.ps1") {
+        Copy-Item -Path $file -Destination $P
+    }
+    
+    foreach ($file in Get-ChildItem $P -Filter "*_profile.ps1") {
+        Add-PathVar -Verbose -Path (Join-Path -Path $P -ChildPath $file) 
+    }
 }
